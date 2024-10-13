@@ -7,8 +7,11 @@ export class Event {
     }
     processChoice() {
         console.log(this.text)
+        choices.forEach((elem) => {
+            console.log(`${elem.letter}) ${elem.text}`)
+        })
         const answer = prompt('Что ты выберешь?')
-        console.log(choices[answer].produceresult())
+        choices[answer].produceResult()
         if (this.choices == []) {
             resultQueue.push('go')
             return
@@ -24,7 +27,7 @@ export class Choice {
         this.text = text
         this.result = result
     }
-    produceresult() {
+    produceResult() {
         resultQueue.push(this.result)
     }   
 }

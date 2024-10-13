@@ -1,5 +1,15 @@
-import Location from 'location.js';
-import { event1, event2, event3, event4, event5, event6, event7, event8, event9 } from 'story.js';
+import Location from './locations.js';
+import {
+    event1,
+    event2,
+    event3,
+    event4,
+    event5,
+    event6,
+    event7,
+    event8,
+    event9 
+} from './story.js';
 
 const taverna = new Location(
     'Таверна "Синий пони"',

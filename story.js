@@ -1,4 +1,4 @@
-import {Event, Choice} from 'events.js';
+import {Event, Choice} from './events.js';
 
 const choices1 = [new Choice('a', 'да', 'go'), new Choice('b', 'нет', 'stay')]
 export const event1 = new Event(
