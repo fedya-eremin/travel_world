@@ -1,9 +1,10 @@
 {
-  "name": "game",
+  "name": "travel_world",
   "version": "1.0.0",
-  "main": "events.js",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
