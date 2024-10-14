@@ -31,14 +31,25 @@ export default class Player {
           this.locationPtr += 2;
           this.location = route[this.locationPtr];
           break;
+        case "sleep":
+          await new Promise(r => setTimeout(r, parseInt(command[1])));
+          break;
         case "put":
           if (command[2] === "hp") {
             this.health += parseInt(command[1]);
+            this.inventory.push({name: command[3], atk: command[1]})
+            console.log(`Вы выпили ${command[3]}. ${command[1]} к здоровью. Ваше здоровье - ${this.health}`)
           } else if (command[2] === "atk") {
             this.power += parseInt(command[1]);
+            this.inventory.push({name: command[3], hp: command[1]})
+            console.log(`Вы взяли ${command[3]}. ${command[1]} к атаке. Ваша атака - ${this.power}`)
           } else {
             throw new Error(`Unknow player parameter: ${command[2]}`);
           }
+          break;
+        case "save":
+          this.inventory.push({name: command[1]})
+          console.log(`Вы взяли ${command[1]}. Возможно, это вам пригодится...`)
           break;
         default:
           throw new Error(`Unknown command: ${command[0]}`);

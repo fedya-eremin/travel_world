@@ -4,18 +4,20 @@ import {
   event2,
   event3,
   event4,
-  event4_1,
   event5,
   event6,
   event7,
   event8,
   event9,
+  event10,
+  event11,
+  event12,
 } from "./story.js";
 
 const taverna = new Location(
   'Таверна "Синий пони"',
   "Здесь отдает выпивкой и древисиной, очень много сомнительных людей. Но, тем не менее, это место вы любите.",
-  [event1, event4],
+  [event1, event12, event4],
 );
 
 const outside = new Location(
@@ -24,7 +26,7 @@ const outside = new Location(
   [event2, event3],
 );
 
-const forest = new Location("Лес", "Темный таинственный лес.", [event4_1]);
+const forest = new Location("Лес", "Темный таинственный лес.", [event10]);
 
 const castle = new Location(
   "Замок барона",
@@ -41,7 +43,7 @@ const tavernaRest = new Location(
 const mysteryLake = new Location(
   "Таинственное озеро",
   "Здесь какой-то плотный туман.",
-  [event8],
+  [event11, event8]
 );
 
 const caveOfBear = new Location(
