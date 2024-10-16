@@ -19,7 +19,7 @@ export default class Player {
     console.log(`${this.location.name} - ${this.location.description}`);
     let commands = this.location.events.shift().processChoice().split(",");
     for (let command of commands) {
-      command = command.split(" ");
+      command = command.split("&");
       switch (command[0]) {
         case "go":
           this.locationPtr++;
@@ -50,6 +50,26 @@ export default class Player {
         case "save":
           this.inventory.push({name: command[1]})
           console.log(`Вы взяли ${command[1]}. Возможно, это вам пригодится...`)
+          break;
+        case "fight":
+          let enemyAtk = parseInt(command[1])
+          let enemyHp = parseInt(command[2])
+          if (this.health < enemyHp || this.health === enemyHp && this.power <= enemyAtk) {
+            console.log(`Вам не удалось победить ${command[3]}`)
+            process.exit(1)
+          } else {
+            console.log(`Вы победили врага ${command[3]}`)
+          }
+          break;
+        case "check":
+          if (this.inventory.filter((e) => e.name === command[1]).length >= 1) {
+              console.log(command[2])
+          } else {
+              console.log(command[3])
+          }
+          break;
+        case "exit":
+          process.exit(0);
           break;
         default:
           throw new Error(`Unknown command: ${command[0]}`);

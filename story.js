@@ -1,6 +1,6 @@
 import { Event, Choice } from "./events.js";
 
-const choices1 = [new Choice("a", "да", "sleep 1000"), new Choice("b", "нет", "stay")];
+const choices1 = [new Choice("a", "да", "sleep&1000"), new Choice("b", "нет", "stay")];
 export const event1 = new Event(
   "Вам становится душно, вы чувствуете, что устали. Хотите выйти на улицу?",
   choices1,
@@ -10,11 +10,11 @@ export const event1 = new Event(
 export const event12 = new Event(
   'Вы выходите на улицу, расталкивая посетителей. Ожидайте...',
   [],
-  'sleep 5000,go'
+  'sleep&5000,go'
 )
 
 const choices2 = [
-  new Choice("a", "да", "put 100 hp Эликсир,sleep 10000"),
+  new Choice("a", "да", "put&100&hp&Эликсир,sleep&10000"),
   new Choice("b", "нет", "stay"),
 ];
 // добавь игроку + 100 к жизни, если да
@@ -26,21 +26,21 @@ export const event2 = new Event(
 export const event3 = new Event(
   "Торговец спрашивает у вас слышали ли вы о медведе. Вы говорите, что нет. Вас он заинтересовывает рассказом. Он показывает вам где замок барона. Вы идете туда",
   [],
-  "sleep 5000,skip",
+  "sleep&5000,skip",
   "Вы быстро пошли к замку барона. Ожидайте..."
 );
 
 export const event4 = new Event(
   "Вы остались. Вы слышите, как местные говорят о чем-то. Вы подслушиваете и узнате историю о медведе. Вы решаете пойти на его поиски в лес.",
   [],
-  "sleep 10000,skip",
+  "sleep&10000,skip",
   "Вы долго идете по лесу. Ожидайте..."
 
 );
 
 
 const choices3 = [
-  new Choice("a", "да", "put 50 atk РжавыйМеч,stay"),
+  new Choice("a", "да", "put&50&atk&РжавыйМеч,stay"),
   new Choice("b", "нет", "stay"),
 ];
 export const event5 = new Event(
@@ -51,7 +51,7 @@ export const event5 = new Event(
 export const event6 = new Event(
   "Вы устали после разговора с бароном. Вам кажется, что у барона не все в порядке с головой. Вы решили пойти отдохнуть в ближайшую таверну.",
   [],
-  'sleep 20000,go',
+  'sleep&20000,go',
   'Вы пошли в сторону таверны. Ожидайте...'
 );
 
@@ -65,12 +65,12 @@ export const event7 = new Event(
 export const event11 = new Event(
   'Вы идете до тайного озера, вокруг вас стелится густой туман, и летают разные насекомые',
   [],
-  'sleep 10000,stay',
+  'sleep&10000,stay',
   'Ожидайте...'
 )
 
 const choices5 = [
-  new Choice("a", "да", "save СтранныйЭликсир,go,sleep 20000"),
+  new Choice("a", "да", "save&СтранныйЭликсир,go,sleep&20000"),
   new Choice("b", "нет", "go"),
 ];
 export const event8 = new Event(
@@ -83,8 +83,19 @@ export const event8 = new Event(
 export const event9 = new Event(
   "Вы находитесь в пещере медведя. Вы видите огромного медведя, источающего запах смерти и разложения. Его шкура свисает лоскутами до самой в земли, обнажая кости и мышцы. Животное явно мертво далеко не первый день, но дьявольскии огонь, пылающии в его глазах, в заставляет это уродливое создание Медведь издает протяжный рев. Острые, длинные когти оставляют глубокие борозды в земле, когда чудовище бросается в атаку",
   [],
+  "sleep&7000,fight&100&150&Медведь,sleep&7000",
+  "Вам предстоит тяжелая битва..."
 );
 
 export const event10 = new Event(
   'Вы идете по лесу. Он темный, и кажется, что здесь настолько проклятое место, что даже птицы не поют...', [], 'go'
+)
+
+let checkTextNeg = "Однако на этом Ваше приключение окончено..."
+let checkTextPos = "Вы смогли излечить барона от проклятия. Это - полная победа!"
+
+export const event13 = new Event(
+  '',
+  [],
+  `check&СтранныйЭликсир&${checkTextPos}&${checkTextNeg},sleep&10000,exit`
 )

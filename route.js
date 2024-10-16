@@ -12,6 +12,7 @@ import {
   event10,
   event11,
   event12,
+  event13,
 } from "./story.js";
 
 const taverna = new Location(
@@ -49,7 +50,7 @@ const mysteryLake = new Location(
 const caveOfBear = new Location(
   "Пещера медведя",
   "Заброшенная пещера. Вокруг валяются кости.",
-  [event9],
+  [event9, event13],
 );
 
 export const route = [
